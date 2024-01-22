@@ -45,12 +45,16 @@ class KnownFor {
         overview: data['overview'] as String?,
         posterPath: data['poster_path'] as String?,
         mediaType: data['media_type'] as String?,
-        genreIds: data['genre_ids'] as List<int>?,
+        genreIds: (data['genre_ids'] as List<dynamic>?)
+            ?.map((dynamic id) => id is int ? id : 0)
+            .toList(),
         popularity: (data['popularity'] as num?)?.toDouble(),
         firstAirDate: data['first_air_date'] as String?,
         voteAverage: (data['vote_average'] as num?)?.toDouble(),
         voteCount: data['vote_count'] as int?,
-        originCountry: data['origin_country'] as List<String>?,
+        originCountry: (data['origin_country'] as List<dynamic>?)
+            ?.map((dynamic country) => country is String ? country : '')
+            .toList(),
       );
 
   Map<String, dynamic> toMap() => {
