@@ -11,64 +11,17 @@ class MovieItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const MovieDetailsScreen(),
-            ),
-          );
-        },
-        child: Card(
-            child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(
-                        'https://image.tmdb.org/t/p/w500/${movie.backdropPath!}'),
-                    fit: BoxFit.fill,
-                    colorFilter: ColorFilter.mode(
-                        Colors.black.withOpacity(0.5), BlendMode.dstATop)),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const MovieDetailsScreen(),
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          'https://image.tmdb.org/t/p/w500/${movie.posterPath!}',
-                          height: 140,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                      flex: 3,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              movie.originalTitle!,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Text(movie.overview!)
-                          ],
-                        ),
-                      ))
-                ],
-              ),
-            )
-          ],
-        )),
-      ),
+            );
+          },
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                  'https://image.tmdb.org/t/p/w500/${movie.posterPath!}'))),
     );
   }
 }
@@ -86,7 +39,7 @@ class MovieItem extends StatelessWidget {
               child: Image.network(
                   'https://image.tmdb.org/t/p/w500/${movie.backdropPath!}'))
         ],
-      )*/ 
+      )*/
 /*Center(
               child: Column(
                 children: [
@@ -146,4 +99,4 @@ class MovieItem extends StatelessWidget {
                   )
                 ],
               ),
-            ),*/ 
+            ),*/

@@ -32,11 +32,16 @@ class _ActorsScreenState extends State<ActorsScreen> {
   Widget build(BuildContext context) {
     return Skeletonizer(
       enabled: _enabled,
-      child: ListView.builder(
-        itemCount: widget.peopleList.length,
-        itemBuilder: (context, index) {
-          return PersonItem(person: widget.peopleList[index]);
-        },
+      child: GridView.count(
+        // Create a grid with 2 columns. If you change the scrollDirection to
+        // horizontal, this produces 2 rows.
+        crossAxisCount: 2,
+        // Generate 100 widgets that display their index in the List.
+        children: List.generate(widget.peopleList.length, (index) {
+          return Center(
+            child: PersonItem(person: widget.peopleList[index]),
+          );
+        }),
       ),
     );
   }

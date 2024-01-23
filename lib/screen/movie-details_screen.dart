@@ -1,3 +1,4 @@
+import 'package:actors_and_movie_list/model/person/person_response/person_response.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
