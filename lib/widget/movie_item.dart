@@ -1,27 +1,38 @@
 import 'package:actors_and_movie_list/model/movie/movie_list/results.dart';
 import 'package:actors_and_movie_list/screen/movie-details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
-class MovieItem extends StatelessWidget {
+class MovieItem extends StatefulWidget {
   final Results movie;
   const MovieItem({super.key, required this.movie});
 
+  @override
+  State<MovieItem> createState() => _MovieItemState();
+}
+
+class _MovieItemState extends State<MovieItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const MovieDetailsScreen(),
-              ),
-            );
-          },
-          child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                  'https://image.tmdb.org/t/p/w500/${movie.posterPath!}'))),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) =>
+                  MovieDetailsScreen(movieId: widget.movie.id),
+            ),
+          );
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: 'https://image.tmdb.org/t/p/w500${widget.movie.posterPath!}',
+          ),
+        ),
+      ),
     );
   }
 }

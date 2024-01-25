@@ -38,6 +38,8 @@ dependencies:
   http: ^1.2.0
   skeletonizer: ^1.0.1
   percent_indicator: ^4.2.3
+  transparent_image: ^2.0.1
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:

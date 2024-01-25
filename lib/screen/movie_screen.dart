@@ -39,7 +39,9 @@ class _MovieScreenState extends State<MovieScreen> {
         // Generate 100 widgets that display their index in the List.
         children: List.generate(widget.movieList.length, (index) {
           return Center(
-            child: MovieItem(movie: widget.movieList[index]),
+            child: MovieItem(
+              movie: widget.movieList[index],
+            ),
           );
         }),
       ),
