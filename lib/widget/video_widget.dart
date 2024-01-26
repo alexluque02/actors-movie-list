@@ -1,4 +1,5 @@
 import 'package:actors_and_movie_list/model/movie/video_list_response/video_list_response.dart';
+import 'package:actors_and_movie_list/screen/video_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -38,13 +39,23 @@ class _VideoWidgetState extends State<VideoWidget> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return SizedBox(
-            height: 300,
+            height: 270,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data!.results!.length,
               itemBuilder: (context, index) {
-                return Image.network(
-                  'https://img.youtube.com/vi/${snapshot.data!.results![index].key!}/0.jpg',
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => VideoScreen(
+                            keyYt: snapshot.data!.results![index].key!),
+                      ),
+                    );
+                  },
+                  child: Image.network(
+                    'https://img.youtube.com/vi/${snapshot.data!.results![index].key!}/0.jpg',
+                  ),
                 );
               },
             ),
